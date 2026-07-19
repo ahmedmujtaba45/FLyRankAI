@@ -1,0 +1,26 @@
+# Node.js
+node_modules/
+/dist/
+build/
+.env
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+.DS_Store
+.vscode/
+coverage/
+*.local
+*.log
+
+# Editor directories and files
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.vcxproj
+
+# OS files
+Thumbs.db
+ehthumbs.db
+Desktop.ini
