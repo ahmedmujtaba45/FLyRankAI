@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>FlyRankAI Settings</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <main class="page">
+      <h1>Notification settings</h1>
+      <form id="settings-form" novalidate>
+        <label for="name">Display name</label>
+        <input id="name" name="name" type="text" />
+        <p class="error" id="name-error"></p>
+
+        <label for="email">Email</label>
+        <input id="email" name="email" type="email" />
+        <p class="error" id="email-error"></p>
+
+        <label for="timezone">Timezone</label>
+        <select id="timezone" name="timezone">
+          <option value="">Select timezone</option>
+          <option value="UTC">UTC</option>
+          <option value="America/New_York">America/New_York</option>
+          <option value="Europe/London">Europe/London</option>
+        </select>
+        <p class="error" id="timezone-error"></p>
+
+        <label for="notifyFrequency">Notification frequency</label>
+        <select id="notifyFrequency" name="notifyFrequency">
+          <option value="">Select frequency</option>
+          <option value="daily">Daily</option>
+          <option value="weekly">Weekly</option>
+          <option value="monthly">Monthly</option>
+        </select>
+        <p class="error" id="notifyFrequency-error"></p>
+
+        <button type="submit">Save settings</button>
+      </form>
+    </main>
+    <script src="/app.js"></script>
+  </body>
+</html>
