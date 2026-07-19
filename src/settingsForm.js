@@ -1,20 +1,28 @@
 function validateSettings(values) {
   const errors = {};
+  const trimmedName = (values.name || '').trim();
+  const trimmedEmail = (values.email || '').trim();
+  const trimmedTimezone = (values.timezone || '').trim();
+  const trimmedFrequency = (values.notifyFrequency || '').trim();
 
-  if (!values.name || values.name.trim().length < 2) {
-    errors.name = 'Please enter a display name with at least 2 characters.';
+  if (trimmedName.length < 2) {
+    errors.name = 'Enter your full display name (at least 2 characters).';
   }
 
-  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(values.email)) {
-    errors.email = 'Please enter a valid email address.';
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(trimmedEmail)) {
+    errors.email = 'Use a valid email address such as name@example.com.';
   }
 
-  if (!values.timezone) {
-    errors.timezone = 'Please choose a timezone.';
+  if (!trimmedTimezone) {
+    errors.timezone = 'Select a timezone so your updates match your region.';
   }
 
-  if (!values.notifyFrequency) {
-    errors.notifyFrequency = 'Please choose a notification frequency.';
+  if (!trimmedFrequency) {
+    errors.notifyFrequency = 'Choose how often you want updates.';
+  }
+
+  if (trimmedName.length > 80) {
+    errors.name = 'Display name must be 80 characters or fewer.';
   }
 
   return {

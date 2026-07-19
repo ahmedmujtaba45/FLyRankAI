@@ -21,10 +21,16 @@ form.addEventListener('submit', async (event) => {
 
   if (!result.ok) {
     Object.entries(result.errors).forEach(([field, message]) => {
-      document.getElementById(`${field}-error`).textContent = message;
+      const target = document.getElementById(`${field}-error`);
+      if (target) {
+        target.textContent = message;
+      }
     });
     return;
   }
 
-  window.alert(result.message);
+  const successBanner = document.createElement('p');
+  successBanner.setAttribute('role', 'status');
+  successBanner.textContent = result.message;
+  form.appendChild(successBanner);
 });

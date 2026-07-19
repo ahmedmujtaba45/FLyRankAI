@@ -14,17 +14,17 @@ test('accepts valid settings payload', () => {
   assert.deepEqual(result.errors, {});
 });
 
-test('rejects missing values and invalid email', () => {
+test('rejects missing values, invalid email, and overlong names', () => {
   const result = validateSettings({
-    name: 'A',
+    name: 'A'.repeat(81),
     email: 'not-an-email',
     timezone: '',
     notifyFrequency: '',
   });
 
   assert.equal(result.isValid, false);
-  assert.equal(result.errors.name, 'Please enter a display name with at least 2 characters.');
-  assert.equal(result.errors.email, 'Please enter a valid email address.');
-  assert.equal(result.errors.timezone, 'Please choose a timezone.');
-  assert.equal(result.errors.notifyFrequency, 'Please choose a notification frequency.');
+  assert.equal(result.errors.name, 'Display name must be 80 characters or fewer.');
+  assert.equal(result.errors.email, 'Use a valid email address such as name@example.com.');
+  assert.equal(result.errors.timezone, 'Select a timezone so your updates match your region.');
+  assert.equal(result.errors.notifyFrequency, 'Choose how often you want updates.');
 });

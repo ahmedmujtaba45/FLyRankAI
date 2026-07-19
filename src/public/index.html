@@ -9,32 +9,33 @@
   <body>
     <main class="page">
       <h1>Notification settings</h1>
+      <p class="intro">Choose how your team updates should be delivered.</p>
       <form id="settings-form" novalidate>
         <label for="name">Display name</label>
-        <input id="name" name="name" type="text" />
-        <p class="error" id="name-error"></p>
+        <input id="name" name="name" type="text" autocomplete="name" required aria-describedby="name-error" />
+        <p class="error" id="name-error" role="alert"></p>
 
         <label for="email">Email</label>
-        <input id="email" name="email" type="email" />
-        <p class="error" id="email-error"></p>
+        <input id="email" name="email" type="email" autocomplete="email" required aria-describedby="email-error" />
+        <p class="error" id="email-error" role="alert"></p>
 
         <label for="timezone">Timezone</label>
-        <select id="timezone" name="timezone">
+        <select id="timezone" name="timezone" required aria-describedby="timezone-error">
           <option value="">Select timezone</option>
           <option value="UTC">UTC</option>
           <option value="America/New_York">America/New_York</option>
           <option value="Europe/London">Europe/London</option>
         </select>
-        <p class="error" id="timezone-error"></p>
+        <p class="error" id="timezone-error" role="alert"></p>
 
         <label for="notifyFrequency">Notification frequency</label>
-        <select id="notifyFrequency" name="notifyFrequency">
+        <select id="notifyFrequency" name="notifyFrequency" required aria-describedby="notifyFrequency-error">
           <option value="">Select frequency</option>
           <option value="daily">Daily</option>
           <option value="weekly">Weekly</option>
           <option value="monthly">Monthly</option>
         </select>
-        <p class="error" id="notifyFrequency-error"></p>
+        <p class="error" id="notifyFrequency-error" role="alert"></p>
 
         <button type="submit">Save settings</button>
       </form>
