@@ -32,3 +32,6 @@
 - Ask the assistant to critique README clarity, setup guidance, and convention consistency.
 - Apply at least one improvement after critique, such as adding a setup section or clarifying the stack.
 - Use AI feedback to keep the repository approachable for new contributors.
+- When generating UI or validation logic, include file references, constraints, acceptance criteria, and a verification step in the prompt.
+- Require tests or a runnable proof for every feature before accepting AI output.
+- Review generated code for accessibility, edge cases, and error messaging rather than trusting the first pass.

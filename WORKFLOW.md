@@ -1,0 +1,9 @@
+# AI workflow comparison for the settings form drill
+
+This exercise compared two implementations of a small settings form: one created from a vague prompt and one from a precise prompt with explicit constraints, file references, and a verification step. The difference was not only in code quality, but in how much review and correction was required after generation.
+
+In the first branch, the form validated the required fields and produced a working server response, but it did not make several quality tradeoffs visible until review. The main issue I caught was that the prompt had allowed the model to skip accessibility details and edge-case handling. For example, the initial version lacked explicit screen-reader-friendly error regions and did not guard against overly long names beyond the basic minimum-length rule. That meant the generated implementation passed the happy path but would be fragile in real use.
+
+The second branch improved correctness by tightening the validation logic around whitespace, email format, and maximum name length. It also added clearer error copy and semantic HTML attributes such as required fields and alert regions, which improves accessibility and makes the form easier to maintain. The review effort was noticeably higher in the first round because I had to discover missing behavior manually; in the second round, the spec reduced ambiguity and made the implementation more predictable.
+
+The most important lesson was that AI output improves when the prompt asks for verification, not just generation. Requiring tests and a run step caused the second attempt to cover more edge cases and reduced the chance of shipping a form that looked complete but was only partially correct. For future projects, I would keep a simple rule: every generated UI feature should include a behavior checklist, an accessibility checklist, and a test or manual verification step before it is accepted.
